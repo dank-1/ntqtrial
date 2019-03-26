@@ -74,8 +74,7 @@ table {
 }
 
 .item-box__media {
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+
 }
 
 .item-box__content {
