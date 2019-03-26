@@ -40,6 +40,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
   line-height: 1;
+  color: #2c2e33;
 }
 ol, ul {
   list-style: none;
@@ -55,5 +56,30 @@ q:before, q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+.screen-box {
+  background: #fdfdfd;
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.item-box {
+  border-radius: 5px;
+  background: #fff;
+  box-shadow:
+}
+
+.item-box__media {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  box-shadow: 0px 0px 5px 1px #eaeaea;
+  -moz-box-shadow: 0px 0px 5px 1px #eaeaea;
+  -webkit-box-shadow: 0px 0px 5px 1px #eaeaea;
+}
+
+.item-box__content {
+  padding: 10px;
 }
 </style>
