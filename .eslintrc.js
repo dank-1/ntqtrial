@@ -6,7 +6,6 @@ module.exports = {
     "react/display-name": 1,
     "semi" : [2 , "never"],
     "key-spacing" : [2, {
-      "beforeColon" : true,
       "afterColon" : true,
     }],
     "no-unused-vars": [1, {"vars" : "all", "args" : "after-used"} ],
