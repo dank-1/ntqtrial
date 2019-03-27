@@ -71,6 +71,7 @@ table {
   box-shadow: 0px 0px 5px 1px #eaeaea;
   -moz-box-shadow: 0px 0px 5px 1px #eaeaea;
   -webkit-box-shadow: 0px 0px 5px 1px #eaeaea;
+  margin: 20px auto;
 }
 
 .item-box__media img {
@@ -85,5 +86,6 @@ table {
 
 .screen-box__main {
   padding: 20px;
+  float: left;
 }
 </style>
