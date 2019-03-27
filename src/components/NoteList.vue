@@ -1,7 +1,7 @@
 <template>
   <section class="screen-box">
-    <header title="リーフォーマッ" url="http://dantri.com.vn"></header>
-    <main>
+    <Header title="リーフォーマッ" url="http://dantri.com.vn"></Header>
+    <main class="screen-box__main">
       <template v-for="itemNoteList in noteList">
         <note-item :noteItem="itemNoteList"></note-item>
       </template>
