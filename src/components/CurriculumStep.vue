@@ -1,16 +1,21 @@
 <template>
-  <div class="item-box">
-    <p class="title">STEP {{ order }}</p>
-    <video-player
-      class="player"
-      :videoUrl="data.videoUrl"
-      :thumbnailUrl="data.thumbnailUrl"/>
-    <div class="description" v-if="data.description">{{ data.description }}</div>
+  <swiper :options="swiperOption" class="swiper-container" :style="zIndex">
+    <swiper-slide class="swiper-slide curriculum-step">
+      <p class="title">STEP {{ order }}</p>
+      <video-player
+        class="player"
+        :videoUrl="data.videoUrl"
+        :thumbnailUrl="data.thumbnailUrl"/>
+      <div class="description" v-if="data.description">{{ data.description }}</div>
+    </swiper-slide>
     <curriculum-step v-if="data.step" :data="data.step" :order="order+1"></curriculum-step>
-  </div>
+  </swiper>
 </template>
 
 <script>
+import 'swiper/dist/css/swiper.css'
+
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import VideoPlayer from '@/components/VideoPlayer.vue'
 import CurriculumStep from '@/components/CurriculumStep.vue'
 
@@ -18,24 +23,32 @@ export default {
   name: 'curriculum-step',
   props: {
     data: { type: Object },
-    order: { type: Number }
+    order: { type: Number },
+    swiperOption: { type: Object }
   },
   components: {
+    swiper,
+    swiperSlide,
     VideoPlayer,
     CurriculumStep
+  },
+  computed: {
+    zIndex() {
+      return { 'z-index': this.order+1 }
+    }
   }
 }
 </script>
 
 <style>
-.item-box {
+.curriculum-step {
   border-radius: 16px 16px 0 0 / 16px 16px 0 0;
   box-shadow: 0 -2px 16px 0 rgba(0,0,0,0.10);
   color: #16171A;
   padding-top: 24px;
 }
 
-.item-box .title {
+.curriculum-step .title {
   text-align: center;
   font-family: Helvetica;
   font-size: 20px;
@@ -44,7 +57,7 @@ export default {
   margin-bottom: 24px;
 }
 
-.item-box .player, .item-box .description {
+.curriculum-step .player, .curriculum-step .description {
   margin-left: 16px;
   margin-right: 16px;
 }

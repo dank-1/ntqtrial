@@ -1,6 +1,6 @@
 <template>
-  <section class="screen-box">
-    <div class="overview">
+  <swiper :options="swiperOption" class="swiper-container">
+    <swiper-slide class="swiper-slide">
       <video-player
         class="player"
         :videoUrl="curriculum.videoUrl"
@@ -8,21 +8,39 @@
       <p class="title">{{ curriculum.title }}</p>
       <p class="received-date">{{ curriculum.receivedDate }}</p>
       <div class="description">{{ curriculum.description }}</div>
-    </div>
-    <curriculum-step v-if="recursionStep" :data="recursionStep" :order=1></curriculum-step>
-  </section>
+    </swiper-slide>
+    <curriculum-step
+      v-if="recursionStep"
+      :data="recursionStep"
+      :order=1
+      :swiperOption="swiperOption"></curriculum-step>
+  </swiper>
 </template>
 
 <script>
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import VideoPlayer from '@/components/VideoPlayer.vue'
 import CurriculumStep from '@/components/CurriculumStep.vue'
 
+import 'swiper/dist/css/swiper.css'
+
 export default {
   name: 'curriculum',
-  components: { VideoPlayer, CurriculumStep },
+  components: {
+    swiper,
+    swiperSlide,
+    VideoPlayer,
+    CurriculumStep
+  },
   data () {
     return {
-      curriculum: {}
+      curriculum: {},
+      swiperOption: {
+        direction: 'vertical',
+        slidesPerView: 'auto',
+        spaceBetween: 30,
+        nested: true
+      }
     }
   },
   computed: {
@@ -88,6 +106,13 @@ html, body, #app, main, .screen-box {
   height: 100%;
 }
 
+.swiper-container {
+  width: 100%;
+  height: 100%;
+  /* position: absolute; */
+  background: #fff;
+}
+
 .screen-box {
   color: rgba(22,23,26,1);
   font-family: "Hiragino Sans";
@@ -114,13 +139,11 @@ html, body, #app, main, .screen-box {
   line-height: 24px;
 }
 
-.overview, .step {
-  margin-bottom: 24px;
+.swiper-slide {
+  height: 80%;
 }
 
 .player {
   margin-bottom: 16px;
 }
-
-
 </style>
