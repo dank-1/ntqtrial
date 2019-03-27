@@ -3,7 +3,6 @@ module.exports = {
     'plugin:vue/recommended'
   ],
   rules: {
-    "react/display-name": 1,
     "semi" : [2 , "never"],
     "key-spacing" : [2, {
       "afterColon" : true,
