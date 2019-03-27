@@ -68,15 +68,14 @@ table {
 .item-box {
   border-radius: 5px;
   background: #fff;
-  box-shadow:
+  box-shadow: 0px 0px 5px 1px #eaeaea;
+  -moz-box-shadow: 0px 0px 5px 1px #eaeaea;
+  -webkit-box-shadow: 0px 0px 5px 1px #eaeaea;
 }
 
 .item-box__media {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  box-shadow: 0px 0px 5px 1px #eaeaea;
-  -moz-box-shadow: 0px 0px 5px 1px #eaeaea;
-  -webkit-box-shadow: 0px 0px 5px 1px #eaeaea;
 }
 
 .item-box__content {
