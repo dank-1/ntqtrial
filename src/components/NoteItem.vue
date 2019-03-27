@@ -1,7 +1,7 @@
 <template>
   <section class="item-box item-note-list">
     <div class="item-box__media">
-      <img v-bind:src="noteItem.thumbUrl" />
+      <img :src="noteItem.thumbUrl" />
     </div>
     <div class="item-box__content">
       <span class='title'>カリキュラムタイトル</span>
