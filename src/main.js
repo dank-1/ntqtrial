@@ -1,9 +1,9 @@
 'use strict'
 
 import Vue from 'vue'
+import App from './App'
 import router from './router'
 import store from './store';
-import components from './components';
 
 Vue.config.productionTip = false
 
@@ -12,5 +12,5 @@ new Vue({
   store,
   router,
   template: '<App/>',
-  components
+  components: { App }
 })

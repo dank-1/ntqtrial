@@ -1,14 +1,12 @@
 <template>
   <section class="item-box item-note-list">
     <div class="item-box__media">
-      <img v-bind:src="noteItem.image" v-bind:alt="noteItem.title" />
+      <img v-bind:src="noteItem.thumbUrl" />
     </div>
     <div class="item-box__content">
-      <span class='title'> {{ noteItem.title }}</span>
-      <div class='description'>
-          {{ noteItem.description }}
-      </div>
-      <span class='created-date'> {{ noteItem.createDate }}</span>
+      <span class='title'>カリキュラムタイトル</span>
+      <div class='description' v-html="noteItem.memo"></div>
+      <span class='created-date'> {{ noteItem.date }}</span>
     </div>
   </section>
 </template>
@@ -21,7 +19,7 @@ export default {
       type: Object,
       required: true,
     },
-  },
+  }
 }
 </script>
 

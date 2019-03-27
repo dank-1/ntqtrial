@@ -1,7 +1,11 @@
 'use strict'
 
-import api from '../api';
+import { getNoteList } from '../api'
 
 export default {
-
+  getNoteList: ({ commit }) => {
+    getNoteList (( noteList ) => {
+      commit ( 'setNoteList', noteList )
+    })
+  }
 }

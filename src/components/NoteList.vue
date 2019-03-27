@@ -1,67 +1,82 @@
 <template>
   <section class="screen-box">
-    <header-note title="リーフォーマッ" url="http://dantri.com.vn"></header-note>
+    <header title="リーフォーマッ" url="http://dantri.com.vn"></header>
     <main>
       <template v-for="itemNoteList in noteList">
         <note-item :noteItem="itemNoteList"></note-item>
       </template>
-      <button class='submit-note-list'>練習ノート</button>
+      <div class="create-note">
+        <button class="create-note__btn">練習ノート</button>
+      </div>
     </main>
   </section>
 </template>
 
 <script>
-export default {
-  name: 'note-list',
-  data () {
-    return {
-      noteList: [
-          { title: 'カリキュラムタイトル', image: './static/img/student.jpg', description: 'フリーフォーマットでのテキストフリーフォーマットでのテキストフリーフォーマットでのテキストフリーフォーマットでのテキストフリーフォーマットでのテキストフリーフォーマットでのテキストフリーフォーマットでのテキスト', createDate: '2018.02.10' },
-          { title: 'カリキュラムタイトル', image: './static/img/student.jpg', description: 'フリーフォーマットでのテキストフリーフォーマットでのテキストフリーフォーマットでのテキストフリーフォーマットでのテキストフリーフォーマットでのテキストフリーフォーマットでのテキストフリーフォーマットでのテキスト', createDate: '2018.02.10' },
-          { title: 'カリキュラムタイトル', image: './static/img/student.jpg', description: 'フリーフォーマットでのテキストフリーフォーマットでのテキストフリーフォーマットでのテキストフリーフォーマットでのテキストフリーフォーマットでのテキストフリーフォーマットでのテキストフリーフォーマットでのテキスト', createDate: '2018.02.10' },
-          { title: 'カリキュラムタイトル', image: './static/img/student.jpg', description: 'フリーフォーマットでのテキストフリーフォーマットでのテキストフリーフォーマットでのテキストフリーフォーマットでのテキストフリーフォーマットでのテキストフリーフォーマットでのテキストフリーフォーマットでのテキスト', createDate: '2018.02.10' },
-      ]
-    }
-  },
-}
+  import { mapState } from 'vuex'
+  import Header from './Header.vue';
+  import NoteItem from './NoteItem.vue';
+
+  export default {
+    name: 'note-list',
+    data () {
+      return {
+
+      }
+    },
+    components: {
+      Header,
+      NoteItem
+    },
+    mounted () {
+      this.$store.dispatch('getNoteList');
+    },
+    computed: mapState([
+      'noteList'
+    ])
+  }
 </script>
 
 <style>
-.submit-note-list {
-  width:80%;
-  margin: 10px auto;
-  display: inline-block;
-  margin-bottom: 0;
-  font-weight: 400;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  -ms-touch-action: manipulation;
-  touch-action: manipulation;
-  cursor: pointer;
-  background-image: none;
-  border: 1px solid transparent;
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 1.42857143;
-  border-radius: 4px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  color: #fff;
-  background-color: #e4327d;
-  border-color: #d43f3a;
-  position: fixed;
-  overflow: hidden;
-  z-index: 2400;
-  right: 35px;
-  bottom: 50px !important;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-}
+  .create-note {
+    position: fixed;
+    bottom: 30px;
+    text-align: center;
+    z-index: 2400;
+    width: 100%;
+  }
+
+  .create-note__btn {
+    width:80%;
+    margin: 10px auto;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid #d43f3a;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: #fff;
+    background-color: #e4327d;
+    overflow: hidden;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    height: 40px;
+    line-heightQ: 40px;
+  }
 
 </style>
