@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import NoteList from '@/components/NoteList'
-import CurriculumDetail from '@/components/CurriculumDetail'
+import Curriculum from '@/components/Curriculum'
 
 Vue.use(Router)
 
@@ -19,9 +19,9 @@ export default new Router({
       component: NoteList
     },
     {
-      path: '/curriculum_detail/:curriculumId',
-      name: 'CurriculumDetail',
-      component: CurriculumDetail
+      path: '/curriculum/:curriculumId',
+      name: 'curriculum',
+      component: Curriculum
     }
   ]
 })

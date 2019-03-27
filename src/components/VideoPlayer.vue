@@ -4,16 +4,13 @@
       <img :src="thumbnailUrl" @click="onClickVideo(videoUrl)"/>
       <span class='icon-play' @click="onClickVideo(videoUrl)"></span>
     </template>
-    <template v-if="playingUrl">
-      <video
-        ref="video"
-        :src="playingUrl"
-        controls=true
-        autoplay=true
-        playsinline=true
-        webkit-playsinline=true
-        type="video/mp4" />
-    </template>
+    <video
+      v-show="playingUrl"
+      ref="video"
+      :src="playingUrl"
+      controls=true
+      autoplay=true
+      type="video/mp4" />
   </div>
 </template>
 
@@ -32,6 +29,21 @@ export default {
   methods: {
     onClickVideo (url) {
       this.playingUrl = url
+      this.$refs['video'].play()
+      this.requestFullScreen()
+    },
+    requestFullScreen() {
+      const elem = this.$refs['video']
+      if ( elem.webkitRequestFullScreen ) {
+        elem.webkitRequestFullScreen();
+        elem.addEventListener('webkitfullscreenchange', this.changeFullScreen)
+      }
+    },
+    changeFullScreen(e) {
+      if (document.webkitFullscreenElement === null) {
+        this.$refs['video'].pause()
+        this.playingUrl = null
+      }
     }
   }
 }
@@ -53,6 +65,9 @@ export default {
   width: 100%;
 }
 .video-player .icon-play {
+  background: url("/static/img/icons/icon-play.png") no-repeat;
+  background-position: center center;
+  background-size:contain;
   position: absolute;
   left: 0;
   right: 0;
@@ -62,13 +77,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 50%;
-  background-color: palevioletred;
-  color: #fff;
   width: 64px;
   height: 64px;
-}
-.video-player .icon-play::before {
-  content: '▶';
 }
 </style>
