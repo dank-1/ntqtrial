@@ -1,7 +1,7 @@
 <template>
   <header>
     <div class='header'>
-      <span class='icon-back' @click="handleBack(url)"></span>
+      <span class='icon-back' @click="handleBack( url )"></span>
       <span class='title'> {{ title }} </span>
     </div>
   </header>
@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'header-note',
+  name: 'header',
   props: {
     url: {
       type: String,
