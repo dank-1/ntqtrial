@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "lint": "eslint --ext .js,.vue src/"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -28,6 +29,8 @@
     "copy-webpack-plugin": "^4.1.1",
     "css-loader": "^1.0.1",
     "cssnano": "^4.1.10",
+    "eslint": "^5.15.3",
+    "eslint-plugin-vue": "^5.2.2",
     "eventsource-polyfill": "^0.9.6",
     "express": "^4.16.2",
     "extract-text-webpack-plugin": "^3.0.0",
