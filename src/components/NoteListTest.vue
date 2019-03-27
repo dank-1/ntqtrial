@@ -1,6 +1,6 @@
 <template>
   <section class="screen-box note-list-screen">
-    <Header title="リーフォーマッ" screen=""></Header>
+    <Header title="Note List Test" screen=""></Header>
     <main class="screen-box__main">
       <template v-for="itemNoteList in noteList">
         <note-item :noteItem="itemNoteList"></note-item>
@@ -18,7 +18,7 @@
   import NoteItem from './NoteItem.vue';
 
   export default {
-    name: 'note-list',
+    name: 'note-list-test',
     data () {
       return {
 
@@ -29,7 +29,7 @@
       NoteItem
     },
     mounted () {
-      this.$store.dispatch('getNoteList');
+
     },
     computed: mapState([
       'noteList'

@@ -1,7 +1,7 @@
 <template>
   <header>
     <div class='header'>
-      <span class='icon-back' @click="handleBack( url )"></span>
+      <span class='icon-back' @click="goScreen( screen )"></span>
       <span class='title'> {{ title }} </span>
     </div>
   </header>
@@ -11,7 +11,7 @@
 export default {
   name: 'header',
   props: {
-    url: {
+    screen: {
       type: String,
       required: true,
     },
@@ -21,17 +21,9 @@ export default {
       required: true,
     },
   },
-
   methods: {
-    /**
-      * Back Url
-      * @param url
-      *
-      * @function handleBack
-      */
-
-    handleBack(url) {
-      this.$router.push(url);
+    goScreen( screen ) {
+      this.$store.commit('goScreen', screen)
     },
   }
 }
