@@ -1,10 +1,10 @@
 <template>
   <section class="screen-box">
-    <header></header>
+    <header />
     <main>
       <section class="item-box">
-        <div class="item-box__media"></div>
-        <div class="item-box__content"></div>
+        <div class="item-box__media" />
+        <div class="item-box__content" />
       </section>
     </main>
   </section>
@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'note-list',
+  name: 'NoteList',
   data () {
     return {
 
