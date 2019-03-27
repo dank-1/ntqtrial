@@ -1,23 +1,37 @@
 <template>
-  <div class='header'>
-    <span class='icon-back' @click="handleBack('dantri.com.vn')"></span>
-    <span class='title'> リーフォーマッ </span>
-  </div>
+  <header>
+    <div class='header'>
+      <span class='icon-back' @click="handleBack(url)"></span>
+      <span class='title'> {{ title }} </span>
+    </div>
+  </header>
 </template>
 
 <script>
 export default {
-  name: 'header',
+  name: 'header-note',
+  props: {
+    url: {
+      type: String,
+      required: true,
+    },
+
+    title: {
+      type: String,
+      required: true,
+    },
+  },
+
   methods: {
     /**
       * Back Url
       * @param url
       *
-      * @function toggleSelect
+      * @function handleBack
       */
 
     handleBack(url) {
-        this.$router.push(url);
+      this.$router.push(url);
     },
   }
 }

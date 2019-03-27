@@ -7,6 +7,11 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import HeaderNote from '@/components/HeaderNote'
+import NoteItem from '@/components/NoteItem'
+Vue.component('header-note', HeaderNote);
+Vue.component('note-item', NoteItem);
 export default {
   name: 'App'
 }
