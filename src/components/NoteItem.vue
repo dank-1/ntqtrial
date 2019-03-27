@@ -25,27 +25,6 @@ export default {
 
 <style>
 
-.item-note-list{
-  width: 90%;
-  margin:20px auto;
-  font-size: 14px;
-}
-
-.item-note-list{
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  box-shadow: 0px 0px 5px 1px #eaeaea;
-  -moz-box-shadow: 0px 0px 5px 1px #eaeaea;
-  -webkit-box-shadow: 0px 0px 5px 1px #eaeaea;
-}
-
-.item-note-list .item-box__media img {
-  width:100%;
-  height:180px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-
 .item-note-list .item-box__content span.title {
   display:inline-block;
   background: #c5d219;
@@ -57,7 +36,6 @@ export default {
 
 .item-note-list .item-box__content .description {
   margin: 20px auto;
-  color: black;
 }
 
 .item-note-list .item-box__content span.created-date {

@@ -73,11 +73,17 @@ table {
   -webkit-box-shadow: 0px 0px 5px 1px #eaeaea;
 }
 
-.item-box__media {
-
+.item-box__media img {
+  width:100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .item-box__content {
   padding: 10px;
+}
+
+.screen-box__main {
+  padding: 20px;
 }
 </style>
