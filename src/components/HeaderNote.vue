@@ -45,8 +45,7 @@ export default {
   height: 30px;
 }
 .header .icon-back{
-  background-image: '/static/img/icons/icon_back.png';
-  background:red;
+  background-image: url("/static/img/icons/icon_back.png");
   width:10%;
   height:30px;
   display:block;
