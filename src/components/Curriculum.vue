@@ -1,23 +1,35 @@
 <template>
-  <div>
-    <header><span class="screen-close" @click="onClickClose"></span></header>
-    <swiper :options="swiperOption" class="swiper-container">
-      <swiper-slide class="swiper-slide">
-        <video-player
-          class="player"
-          :videoUrl="curriculum.videoUrl"
-          :thumbnailUrl="curriculum.thumbnailUrl"/>
-        <p class="title">{{ curriculum.title }}</p>
-        <p class="received-date">{{ curriculum.receivedDate }}</p>
-        <div class="description">{{ curriculum.description }}</div>
-      </swiper-slide>
-      <curriculum-step
-        v-if="recursionStep"
-        :data="recursionStep"
-        :order=1
-        :swiperOption="swiperOption"></curriculum-step>
-    </swiper>
-  </div>
+  <section class="screen-box">
+    <header>
+      <span
+        class="screen-close"
+        @click="onClickClose"
+      />
+    </header>
+    <main>
+      <swiper
+        :options="swiperOption"
+        class="swiper-container"
+      >
+        <swiper-slide class="swiper-slide">
+          <video-player
+            class="player"
+            :video-url="curriculum.videoUrl"
+            :thumbnail-url="curriculum.thumbnailUrl" 
+          />
+          <p class="title">{{ curriculum.title }}</p>
+          <p class="received-date">{{ curriculum.receivedDate }}</p>
+          <div class="description">{{ curriculum.description }}</div>
+        </swiper-slide>
+        <curriculum-step
+          v-if="recursionStep"
+          :data="recursionStep"
+          :order="1"
+          :swiper-option="swiperOption"
+        />
+      </swiper>
+    </main>
+  </section>
 </template>
 
 <script>
@@ -28,7 +40,7 @@ import CurriculumStep from '@/components/CurriculumStep.vue'
 import 'swiper/dist/css/swiper.css'
 
 export default {
-  name: 'curriculum',
+  name: 'Curriculum',
   components: {
     swiper,
     swiperSlide,

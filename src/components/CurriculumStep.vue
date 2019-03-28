@@ -1,15 +1,31 @@
 <template>
-  <swiper :options="swiperOption" class="swiper-container" :style="zIndex">
+  <swiper
+    :options="swiperOption"
+    class="swiper-container"
+    :style="zIndex"
+  >
     <swiper-slide class="swiper-slide curriculum-step">
-      <p class="title">STEP {{ order }}</p>
+      <p class="title">
+        {{ `STEP ${order}` }}
+      </p>
       <video-player
         class="player"
         purpose="curriculumStep"
-        :videoUrl="data.videoUrl"
-        :thumbnailUrl="data.thumbnailUrl"/>
-      <div class="description" v-if="data.description">{{ data.description }}</div>
+        :video-url="data.videoUrl"
+        :thumbnail-url="data.thumbnailUrl"
+      />
+      <div
+        v-if="data.description"
+        class="description"
+      >
+        {{ data.description }}
+      </div>
     </swiper-slide>
-    <curriculum-step v-if="data.step" :data="data.step" :order="order+1"></curriculum-step>
+    <curriculum-step
+      v-if="data.step"
+      :data="data.step"
+      :order="order+1"
+    />
   </swiper>
 </template>
 
@@ -21,17 +37,17 @@ import VideoPlayer from '@/components/VideoPlayer.vue'
 import CurriculumStep from '@/components/CurriculumStep.vue'
 
 export default {
-  name: 'curriculum-step',
-  props: {
-    data: { type: Object },
-    order: { type: Number },
-    swiperOption: { type: Object }
-  },
+  name: 'CurriculumStep',
   components: {
     swiper,
     swiperSlide,
     VideoPlayer,
     CurriculumStep
+  },
+  props: {
+    data: { type: Object, default: null },
+    order: { type: Number, default: 1 },
+    swiperOption: { type: Object, default: null }
   },
   computed: {
     zIndex () {
