@@ -1,17 +1,19 @@
 <template>
   <section class="screen-box">
     <feed-header title="リーフォーマッ"></feed-header>
-    <div class="box-notice">
-      <div class="box-notice__inner clearfix">
-        <div class="box-notice__left">
-          <p>状況に合わせて考えた練習メニュ</p>
-          <p>状況に合わせて考えた練習メニュ</p>
-        </div>
-        <div class="box-notice__right clearfix">
-          <button>入室する</button>
+    <transition name="fade">
+      <div class="box-notice" v-if="!isNoticeConfirmed">
+        <div class="box-notice__inner clearfix">
+          <div class="box-notice__left">
+            <p>まもなくLIVE面談が始まります！</p>
+            <p>{{ noticeTime }}</p>
+          </div>
+          <div class="box-notice__right clearfix">
+            <button @click="onNoticeConfirm">入室する</button>
+          </div>
         </div>
       </div>
-    </div>
+    </transition>
     <main class="screen-box__main">
       <section class="feed__section feed__section-curriculum">
         <header>
@@ -20,30 +22,20 @@
         </header>
         <main>
           <div class="current-curriculum">
-            <img src="static/img/student.jpg">
+            <img :src="currentCurriculum.thumbUrl">
             <div class="current-curriculum__desc">
-              <div class="current-curriculum__desc__title">
-                基礎練習　パドブレターン（ピルエット）
-              </div>
+              <div class="current-curriculum__desc__title">{{ currentCurriculum.title }}</div>
               <div class="current-curriculum__desc__meta">
-                <span>2018.07.28</span>
-                <span>MISAKI先生</span>
+                <span>{{ currentCurriculum.date }}</span>
+                <span>{{ currentCurriculum.coachName }}</span>
               </div>
             </div>
             <div class="background-modal"></div>
           </div>
           <ul class="curriculum-list">
-            <li class="curriculum-list__item">
-              <img src="static/img/student.jpg">
-              <div class="curriculum-list__item__title">
-                カリキュラムのタイトルがここに入ります
-              </div>
-            </li>
-            <li class="curriculum-list__item">
-              <img src="static/img/student.jpg">
-              <div class="curriculum-list__item__title">
-                カリキュラムのタイトルがここに入ります
-              </div>
+            <li class="curriculum-list__item" v-for="curriculum in curriculumList">
+              <img :src="curriculum.thumbUrl">
+              <div class="curriculum-list__item__title">{{ curriculum.title }}</div>
               <div class="background-modal"></div>
             </li>
           </ul>
@@ -75,19 +67,33 @@ import NoteItem from "./NoteItem.vue";
 export default {
   name: "note-list",
   data () {
-    return {};
+    return {
+      noticeTime: '4月2日 15:30〜16:30',
+      isNoticeConfirmed: false
+    }
   },
   components: {
     FeedHeader,
     NoteItem
   },
   mounted () {
-    this.$store.dispatch( 'getNoteList' );
+    this.$store.dispatch( 'getNoteList' )
   },
-  computed: mapState( ["noteList"] ),
+  computed: {
+    currentCurriculum: function () {
+      return this.$store.state.curriculumList[0]
+    },
+    curriculumList: function () {
+      return this.$store.state.curriculumList.slice(1)
+    },
+    ...mapState( ["noteList"] )
+  },
   methods: {
     goScreen: function (screen) {
 
+    },
+    onNoticeConfirm: function () {
+      this.isNoticeConfirmed = true;
     }
   }
 };
@@ -236,5 +242,16 @@ export default {
 
   .feed__section-curriculum {
     margin-bottom: 45px;
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+    -webkit-transition: opacity .5s;
+    -moz-transition: opacity .5s;
+    -o-transition: opacity .5s;
+  }
+
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
   }
 </style>
