@@ -3,5 +3,6 @@
 export default {
   noteList: [],
   curriculumList: [],
-  currentScreen: ''
+  currentScreen: '',
+  currentScreenActive: ''
 }

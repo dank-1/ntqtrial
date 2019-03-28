@@ -5,10 +5,11 @@
       <template v-for="itemNoteList in noteList">
         <note-item :noteItem="itemNoteList"></note-item>
       </template>
-      <div class="create-note">
-        <button class="create-note__btn">練習ノート</button>
-      </div>
+
     </main>
+    <div class="create-note">
+      <button class="create-note__btn">練習ノート</button>
+    </div>
   </section>
 </template>
 
@@ -38,13 +39,8 @@
 </script>
 
 <style>
-  .note-list-screen {
-    position: relative;
-  }
-
   .create-note {
-    position: absolute;
-    left: 0;
+    position: fixed;
     bottom: 30px;
     text-align: center;
     z-index: 2400;

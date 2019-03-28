@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     goScreen: function ( screen ) {
-      this.$store.commit('goScreen', screen)
+      this.$store.dispatch( 'goScreen', screen )
     }
   }
 }

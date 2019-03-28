@@ -4,7 +4,10 @@ export default {
   setNoteList: ( state, noteList ) => {
     state.noteList = [].concat( noteList )
   },
-  goScreen: ( state, screen ) => {
+  updateScreen: ( state, screen ) => {
     state.currentScreen = screen
+  },
+  updateScreenActive: ( state, screen ) => {
+    state.currentScreenActive = screen
   }
 }

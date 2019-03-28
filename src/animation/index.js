@@ -1,17 +1,14 @@
 'use strict'
 
 export default {
-  components: [
+  mainScreen: 'hello',
+  screens: [
     {
       name: 'note-list',
       position: 'right'
-    },
-    {
-      name: 'note-list-test',
-      position: 'right'
     }
   ],
-  floatComponents: [
+  floatScreens: [
 
   ]
 }

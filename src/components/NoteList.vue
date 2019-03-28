@@ -1,6 +1,6 @@
 <template>
   <section class="screen-box note-list-screen">
-    <Header title="リーフォーマッ" screen=""></Header>
+    <Header title="リーフォーマッ"></Header>
     <main class="screen-box__main">
       <template v-for="itemNoteList in noteList">
         <note-item :noteItem="itemNoteList"></note-item>
@@ -38,13 +38,8 @@
 </script>
 
 <style>
-  .note-list-screen {
-    position: relative;
-  }
-
   .create-note {
-    position: absolute;
-    left: 0;
+    position: fixed;
     bottom: 30px;
     text-align: center;
     z-index: 2400;

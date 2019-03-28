@@ -3,8 +3,8 @@
     <section id="main">
       <section id="main-inner" :class="swipeClass">
         <hello></hello>
-        <template v-for="component in animation.components">
-          <component :is="component.name" :class="[`position-${component.position}`, { 'screen--active' : $store.state.currentScreen == component.name }]"></component>
+        <template v-for="screen in animation.screens">
+          <component :is="screen.name" :class="[`position-${screen.position}`, { 'screen--active' : $store.state.currentScreenActive == screen.name }, 'side-screen']"></component>
         </template>
       </section>
     </section>
@@ -14,7 +14,6 @@
 <script>
   import { mapState } from 'vuex'
   import NoteList from './components/NoteList.vue'
-  import NoteListTest from './components/NoteListTest.vue'
   import Hello from './components/Hello.vue'
   import animation from './animation'
 
@@ -22,7 +21,6 @@
     name: 'App',
     components: {
       NoteList,
-      NoteListTest,
       Hello
     },
     data () {
@@ -34,9 +32,9 @@
       swipeClass: function () {
         let className = ''
 
-        this.animation.components.forEach((component) => {
-          if (component.name == this.$store.state.currentScreen) {
-            className = `swipe-${component.position}`
+        this.animation.screens.forEach((screen) => {
+          if (screen.name == this.$store.state.currentScreen) {
+            className = `swipe-${screen.position}`
           }
         })
 
@@ -138,19 +136,56 @@
     -webkit-transition: all 0.5s ease;
   }
 
+  .screen--active {
+    display: block!important;
+  }
+
+  .side-screen {
+    position: absolute;
+    display: none;
+  }
+
+  .position-right {
+    left: 100%;
+    top: 0;
+  }
+
+  .position-left {
+    left: -100%;
+    top: 0;
+  }
+
+  .position-top {
+    left: 0;
+    top: -100%;
+  }
+
+  .position-top {
+    left: 0;
+    top: 100%;
+  }
+
   #main-inner.swipe-right {
     transform: translate(-100%, 0);
     -webkit-transform: translate(-100%, 0);
     -moz-transform: translate(-100%, 0);
   }
 
-  .screen--active {
-    z-index: 999;
+  #main-inner.swipe-left {
+    transform: translate(100%, 0);
+    -webkit-transform: translate(100%, 0);
+    -moz-transform: translate(100%, 0);
   }
 
-  .position-right {
-    position: absolute!important;
-    left: 100%;
-    top: 0;
+  #main-inner.swipe-top {
+    transform: translate(0, 100%);
+    -webkit-transform: translate(0, 100%);
+    -moz-transform: translate(0, 100%);
+  }
+
+  #main-inner.swipe-bottom {
+    transform: translate(0, -100%);
+    -webkit-transform: translate(0, -100%);
+    -moz-transform: translate(0, -100%);
   }
 </style>

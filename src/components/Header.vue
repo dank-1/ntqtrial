@@ -1,32 +1,34 @@
 <template>
   <header>
     <div class='header'>
-      <span class='icon-back' @click="goScreen( screen )"></span>
+      <span class='icon-back' @click="goScreen( backScreen )"></span>
       <span class='title'> {{ title }} </span>
     </div>
   </header>
 </template>
 
 <script>
-export default {
-  name: 'header',
-  props: {
-    screen: {
-      type: String,
-      required: true,
-    },
+  import animation from '../animation'
 
-    title: {
-      type: String,
-      required: true,
+  export default {
+    name: 'header',
+    props: {
+      title: {
+        type: String,
+        required: true,
+      },
     },
-  },
-  methods: {
-    goScreen( screen ) {
-      this.$store.commit('goScreen', screen)
+    data () {
+      return {
+        backScreen: animation.mainScreen
+      }
     },
+    methods: {
+      goScreen( screen ) {
+        this.$store.dispatch('goScreen', screen)
+      },
+    }
   }
-}
 </script>
 
 <style>
