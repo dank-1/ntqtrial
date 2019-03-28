@@ -4,6 +4,7 @@
       <p class="title">STEP {{ order }}</p>
       <video-player
         class="player"
+        purpose="curriculumStep"
         :videoUrl="data.videoUrl"
         :thumbnailUrl="data.thumbnailUrl"/>
       <div class="description" v-if="data.description">{{ data.description }}</div>
@@ -33,7 +34,7 @@ export default {
     CurriculumStep
   },
   computed: {
-    zIndex() {
+    zIndex () {
       return { 'z-index': this.order+1 }
     }
   }

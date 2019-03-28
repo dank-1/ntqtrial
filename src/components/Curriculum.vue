@@ -1,20 +1,23 @@
 <template>
-  <swiper :options="swiperOption" class="swiper-container">
-    <swiper-slide class="swiper-slide">
-      <video-player
-        class="player"
-        :videoUrl="curriculum.videoUrl"
-        :thumbnailUrl="curriculum.thumbnailUrl"/>
-      <p class="title">{{ curriculum.title }}</p>
-      <p class="received-date">{{ curriculum.receivedDate }}</p>
-      <div class="description">{{ curriculum.description }}</div>
-    </swiper-slide>
-    <curriculum-step
-      v-if="recursionStep"
-      :data="recursionStep"
-      :order=1
-      :swiperOption="swiperOption"></curriculum-step>
-  </swiper>
+  <div>
+    <header><span class="screen-close" @click="onClickClose"></span></header>
+    <swiper :options="swiperOption" class="swiper-container">
+      <swiper-slide class="swiper-slide">
+        <video-player
+          class="player"
+          :videoUrl="curriculum.videoUrl"
+          :thumbnailUrl="curriculum.thumbnailUrl"/>
+        <p class="title">{{ curriculum.title }}</p>
+        <p class="received-date">{{ curriculum.receivedDate }}</p>
+        <div class="description">{{ curriculum.description }}</div>
+      </swiper-slide>
+      <curriculum-step
+        v-if="recursionStep"
+        :data="recursionStep"
+        :order=1
+        :swiperOption="swiperOption"></curriculum-step>
+    </swiper>
+  </div>
 </template>
 
 <script>
@@ -64,6 +67,9 @@ export default {
                        : null
       return result
     },
+    onClickClose () {
+
+    },
     mock () {
       // provisional
       return {
@@ -102,14 +108,24 @@ export default {
 </script>
 
 <style>
-html, body, #app, main, .screen-box {
-  height: 100%;
+header .screen-close {
+  background: url("/static/img/icons/icon-close.png") no-repeat;
+  background-position: center center;
+  background-size:contain;
+  position: absolute;
+  left: 16px;
+  top: 12px;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  z-index: 100;
 }
 
 .swiper-container {
   width: 100%;
-  height: 100%;
-  /* position: absolute; */
   background: #fff;
 }
 
@@ -137,10 +153,6 @@ html, body, #app, main, .screen-box {
   word-wrap:break-word;
   font-size: 14px;
   line-height: 24px;
-}
-
-.swiper-slide {
-  height: 80%;
 }
 
 .player {

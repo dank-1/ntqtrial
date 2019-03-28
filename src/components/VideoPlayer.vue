@@ -1,7 +1,7 @@
 <template>
   <div class="video-player">
     <template v-if="!playingUrl">
-      <img :src="thumbnailUrl" @click="onClickVideo(videoUrl)"/>
+      <img :src="thumbnailUrl" @click="onClickVideo(videoUrl)" :style="styleObject" />
       <span class='icon-play' @click="onClickVideo(videoUrl)"></span>
     </template>
     <video
@@ -15,9 +15,20 @@
 </template>
 
 <script>
+const purposeTypes = {
+  curriculumOverview: { width: '100%' },
+  curriculumStep: { width: '100%', 'border-radius': '8px' }
+}
+
 export default {
   name: 'video-player',
   props: {
+    purpose: {
+      default: 'curriculumOverview',
+      validator: function(value) {
+        return Object.keys(purposeTypes).indexOf(value) !== -1
+      }
+    },
     videoUrl: { type: String },
     thumbnailUrl: { type: String }
   },
@@ -26,20 +37,25 @@ export default {
       playingUrl: null
     }
   },
+  computed: {
+    styleObject () {
+      return purposeTypes[this.purpose]
+    }
+  },
   methods: {
     onClickVideo (url) {
       this.playingUrl = url
       this.$refs['video'].play()
       this.requestFullScreen()
     },
-    requestFullScreen() {
+    requestFullScreen () {
       const elem = this.$refs['video']
       if ( elem.webkitRequestFullScreen ) {
         elem.webkitRequestFullScreen();
         elem.addEventListener('webkitfullscreenchange', this.changeFullScreen)
       }
     },
-    changeFullScreen(e) {
+    changeFullScreen (e) {
       if (document.webkitFullscreenElement === null) {
         this.$refs['video'].pause()
         this.playingUrl = null
@@ -60,10 +76,6 @@ export default {
   position: relative;
 }
 
-.video-player img, video {
-  border-radius: 10px;
-  width: 100%;
-}
 .video-player .icon-play {
   background: url("/static/img/icons/icon-play.png") no-repeat;
   background-position: center center;
