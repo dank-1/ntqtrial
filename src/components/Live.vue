@@ -111,16 +111,10 @@ export default {
       return this.status === LIVE_JOINING
     },
     pageTitle () {
-      if (this.isWaiting) {
-        return 'LIVE waiting'
-      }
-      return ''
+      return this.isWaiting ? 'LIVE waiting' : ''
     },
     mainClassName () {
-      if (this.isWaiting) {
-        return 'screen-box__main'
-      }
-      return ''
+      return this.isWaiting ? 'screen-box__main' : ''
     }
   },
   methods: {
