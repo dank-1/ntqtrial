@@ -1,14 +1,14 @@
 <template>
   <div id="app">
     <main>
-      <router-view></router-view>
+      <router-view />
     </main>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app'
+  name: 'App'
 }
 </script>
 
@@ -68,18 +68,22 @@ table {
 .item-box {
   border-radius: 5px;
   background: #fff;
-  box-shadow:
-}
-
-.item-box__media {
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
   box-shadow: 0px 0px 5px 1px #eaeaea;
   -moz-box-shadow: 0px 0px 5px 1px #eaeaea;
   -webkit-box-shadow: 0px 0px 5px 1px #eaeaea;
 }
 
+.item-box__media img {
+  width:100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
 .item-box__content {
   padding: 10px;
+}
+
+.screen-box__main {
+  padding: 20px;
 }
 </style>
