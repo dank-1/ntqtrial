@@ -43,6 +43,9 @@ export default {
   margin:5px auto;
   margin-top:20px;
   height: 30px;
+  box-shadow: 0 2px 16px 0px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 0 2px 16px 0px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0 2px 16px 0px rgba(0,0,0,0.1);
 }
 .header .icon-back{
   background: url("/static/img/icons/icon_back.png") no-repeat;
