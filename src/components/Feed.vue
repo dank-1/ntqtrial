@@ -1,250 +1,240 @@
 <template>
   <section class="screen-box">
-    <Header title="リーフォーマッ" url="http://dantri.com.vn"></Header>
+    <feed-header title="リーフォーマッ"></feed-header>
     <div class="box-notice">
-      <p>状況に合わせて考えた練習メニュ</p>
-      <p>状況に合わせて考えた練習メニュ</p>
-      <p>状況に合わせて考えた練習メニュ</p>
-    </div>
-    <div class="activity-feed">
-      <div class="header-feed">
-        <span class="title">状況に合わ</span>
-        <a class="link" href="#">メニュ</a>
-      </div>
-
-      <div class="main-feed">
-        <img src="static/img/student.jpg" alt>
-        <div class="name-feed">
+      <div class="box-notice__inner clearfix">
+        <div class="box-notice__left">
+          <p>状況に合わせて考えた練習メニュ</p>
           <p>状況に合わせて考えた練習メニュ</p>
         </div>
-        <div class="date-feed">
-          <p>2018.07.07</p>
+        <div class="box-notice__right clearfix">
+          <button>入室する</button>
         </div>
       </div>
-      <div class="list-feed">
-        <div class="horizontal-scroll-wrapper squares">
-          <div>item 1</div>
-          <div>item 2</div>
-          <div>item 3</div>
-          <div>item 4</div>
-          <div>item 5</div>
-          <div>item 6</div>
-          <div>item 7</div>
-          <div>item 8</div>
-        </div>
-        <div class="item-feed">
-          <img src="static/img/student.jpg" alt>
-          <div class="name-feed">
-            <p>状況に合わせて考え</p>
-          </div>
-        </div>
-
-        <div class="item-feed">
-          <img src="static/img/student.jpg" alt>
-          <div class="name-feed">
-            <p>状況に合わせて考え</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="note-item-header">
-      <span class="title">状況に合わ</span>
-      <a class="link" href="#">メニュ</a>
     </div>
     <main class="screen-box__main">
-      <template v-for="itemNoteList in noteList">
-        <note-item :noteItem="itemNoteList"></note-item>
-      </template>
+      <section class="feed__section feed__section-curriculum">
+        <header>
+          <h3>カリキュラム</h3>
+          <a href="#" @click.prevent="goScreen( 'curriculum-list' )">すべて</a>
+        </header>
+        <main>
+          <div class="current-curriculum">
+            <img src="static/img/student.jpg">
+            <div class="current-curriculum__desc">
+              <div class="current-curriculum__desc__title">
+                基礎練習　パドブレターン（ピルエット）
+              </div>
+              <div class="current-curriculum__desc__meta">
+                <span>2018.07.28</span>
+                <span>MISAKI先生</span>
+              </div>
+            </div>
+            <div class="background-modal"></div>
+          </div>
+          <ul class="curriculum-list">
+            <li class="curriculum-list__item">
+              <img src="static/img/student.jpg">
+              <div class="curriculum-list__item__title">
+                カリキュラムのタイトルがここに入ります
+              </div>
+            </li>
+            <li class="curriculum-list__item">
+              <img src="static/img/student.jpg">
+              <div class="curriculum-list__item__title">
+                カリキュラムのタイトルがここに入ります
+              </div>
+              <div class="background-modal"></div>
+            </li>
+          </ul>
+        </main>
+      </section>
+
+      <section class="feed__section feed__section-note">
+        <header>
+          <h3>練習ノート</h3>
+          <a href="#" @click.prevent="goScreen( 'note-list' )">すべて</a>
+        </header>
+        <main>
+          <div class="note-list">
+            <template v-for="itemNoteList in noteList">
+              <note-item :noteItem="itemNoteList"></note-item>
+            </template>
+          </div>
+        </main>
+      </section>
     </main>
   </section>
 </template>
 
 <script>
 import { mapState } from "vuex";
-import Header from "./Header.vue";
+import FeedHeader from "./FeedHeader.vue";
 import NoteItem from "./NoteItem.vue";
 
 export default {
   name: "note-list",
-  data() {
+  data () {
     return {};
   },
   components: {
-    Header,
+    FeedHeader,
     NoteItem
   },
+  mounted () {
+    this.$store.dispatch( 'getNoteList' );
+  },
+  computed: mapState( ["noteList"] ),
+  methods: {
+    goScreen: function (screen) {
 
-  computed: mapState(["noteList"])
+    }
+  }
 };
 </script>
 
 <style>
-::-webkit-scrollbar {
-  width: 1px;
-  height: 1px;
-}
+  .box-notice {
+    background: #E4327D;
+    padding: 10px 16px;
+    color: #fff;
+    font-size: 14px;
+    line-height: 23px;
+    font-weight: 600;
+  }
 
-::-webkit-scrollbar-button {
-  width: 1px;
-  height: 1px;
-}
+  .box-notice__left {
+    float: left;
+    width: 62%;
+  }
 
-div {
-  box-sizing: border-box;
-}
+  .box-notice__right {
+    float: right;
+    width: 38%;
+  }
 
-.horizontal-scroll-wrapper {
-  position: absolute;
-  display: block;
-  top: 0;
-  left: 0;
-  width: calc(250px + 1px);
-  max-height: 750px;
-  margin: 0;
-  padding-top: 1px;
-  background: #abc;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-transform: rotate(-90deg) translateY(-250px);
-  transform: rotate(-90deg) translateY(-250px);
-  -webkit-transform-origin: right top;
-  transform-origin: right top;
-}
-.horizontal-scroll-wrapper > div {
-  display: block;
-  padding: 5px;
-  background: #cab;
-  -webkit-transform: rotate(90deg);
-  transform: rotate(90deg);
-  -webkit-transform-origin: right top;
-  transform-origin: right top;
-}
+  .box-notice__right button {
+    background: #fff;
+    color: #E4327D;
+    border-radius: 20px;
+    padding: 10px 16px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    float: right;
+    margin-top: 4px;
+    box-shadow: 0px 0px 5px 1px #999;
+    -moz-box-shadow: 0px 0px 5px 1px #999;
+    -webkit-box-shadow: 0px 0px 5px 1px #999;
+  }
 
-.squares {
-  padding: 250px 0 0 0;
-}
-.squares > div {
-  width: 250px;
-  height: 250px;
-  margin: 10px 0;
-}
+  .feed__section header {
+    position: relative;
+    margin: 5px 0 25px 0;
+    padding: 0 8px;
+  }
 
-.item-box:first {
-  margin-top: 0px;
-}
-.box-notice {
-  width: 100%;
-  margin-top: 20px;
-  background: #e4327d;
-  color: white;
-  padding: 20px;
-  font-weight: 400;
-}
-.activity-feed {
-  width: 90%;
-  margin: 10px auto;
-}
-.activity-feed .header-feed {
-  width: 100%;
-  float: left;
-  height: 50px;
-}
-.activity-feed .header-feed span.title {
-  display: block;
-  float: left;
-  height: 50px;
-  line-height: 50px;
-  font-weight: bold;
-  font-size: 16px;
-}
+  .feed__section h3 {
+    font-size: 24px;
+    font-weight: 600;
+  }
 
-.activity-feed .header-feed a.link {
-  display: block;
-  float: right;
-  height: 50px;
-  line-height: 50px;
-  font-size: 14px;
-  color: #e4327d;
-  text-decoration: none;
-}
+  .feed__section a {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    color: #E4327D;
+    font-weight: 300;
+    text-decoration: none;
+  }
 
-.note-item-header {
-  width: 90%;
-  margin: 20px auto;
-  height: 50px;
-}
+  .current-curriculum {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
 
-.note-item-header span.title {
-  display: block;
-  float: left;
-  height: 50px;
-  line-height: 50px;
-  font-weight: bold;
-  font-size: 16px;
-}
+  .current-curriculum img {
+    width: 100%;
+    display: block;
+  }
 
-.note-item-header a.link {
-  display: block;
-  float: right;
-  height: 50px;
-  line-height: 50px;
-  font-size: 14px;
-  color: #e4327d;
-  text-decoration: none;
-}
+  .background-modal {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    top: 0;
+    left: 0;
+    border-radius: 8px;
+  }
 
-.activity-feed .main-feed {
-  width: 100%;
-  margin: 10px auto;
-  border-radius: 10px;
-  position: relative;
-}
+  .current-curriculum__desc {
+    position: absolute;
+    left: 0;
+    bottom: 30px;
+    color: #fff;
+    z-index: 1;
+    padding: 0 24px;
+    width: 100%;
+    box-sizing: border-box;
+  }
 
-.activity-feed .main-feed img {
-  width: 100%;
-  border-radius: 10px;
-  height: 300px;
-}
-.activity-feed .main-feed .name-feed {
-  position: absolute;
-  left: 10%;
-  bottom: 20%;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-}
-.activity-feed .main-feed .date-feed {
-  position: absolute;
-  left: 10%;
-  bottom: 10%;
-  color: white;
-  font-size: 14px;
-}
-.activity-feed .list-feed {
-  width: 100%;
-  float: left;
-}
-.activity-feed .list-feed .item-feed {
-  position: relative;
-  width: 220px;
-  height: 100px;
-  border-radius: 10px;
-  float: left;
-  margin-right: 20px;
-}
+  .current-curriculum__desc__title {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
 
-.activity-feed .item-feed img {
-  width: 220px;
-  height: 100px;
-  border-radius: 10px;
-  float: left;
-}
-.activity-feed .item-feed .name-feed {
-  position: absolute;
-  font-size: 14px;
-  color: white;
-  font-weight: bold;
-  top: 40%;
-  left: 10%;
-}
+  .current-curriculum__desc__meta {
+    font-size: 12px;
+  }
+
+  .current-curriculum__desc__meta span {
+    margin-right: 12px;
+  }
+
+  .curriculum-list {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .curriculum-list__item {
+    display: inline-block;
+    margin: 0 10px 0 0;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    width: 200px;
+  }
+
+  .curriculum-list__item:last-child {
+    margin: 0;
+  }
+
+  .curriculum-list__item img {
+    width: 100%;
+    display: block;
+  }
+
+  .curriculum-list__item__title {
+    color: #fff;
+    position: absolute;
+    font-size: 16px;
+    font-weight: 600;
+    left: 0;
+    bottom: 25px;
+    z-index: 1;
+    padding: 0 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .feed__section-curriculum {
+    margin-bottom: 45px;
+  }
 </style>

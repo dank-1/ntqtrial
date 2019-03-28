@@ -40,6 +40,7 @@
 <style>
   .create-note {
     position: fixed;
+    left: 0;
     bottom: 30px;
     text-align: center;
     z-index: 2400;
