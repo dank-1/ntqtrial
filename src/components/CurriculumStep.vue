@@ -17,9 +17,7 @@
       <div
         v-if="data.description"
         class="description"
-      >
-        {{ data.description }}
-      </div>
+      >{{ data.description }}</div>
     </swiper-slide>
     <curriculum-step
       v-if="data.step"
@@ -46,12 +44,21 @@ export default {
   },
   props: {
     data: { type: Object, default: null },
-    order: { type: Number, default: 1 },
-    swiperOption: { type: Object, default: null }
+    order: { type: Number, default: 1 }
+  },
+  data () {
+    return {
+      swiperOption: {
+        direction: 'vertical',
+        slidesPerView: 'auto',
+        spaceBetween: 30,
+        nested: true
+      }
+    }
   },
   computed: {
     zIndex () {
-      return { 'z-index': this.order+1 }
+      return { 'z-index': this.order*2 }
     }
   }
 }

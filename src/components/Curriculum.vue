@@ -17,15 +17,18 @@
             :video-url="curriculum.videoUrl"
             :thumbnail-url="curriculum.thumbnailUrl" 
           />
-          <p class="title">{{ curriculum.title }}</p>
-          <p class="received-date">{{ curriculum.receivedDate }}</p>
+          <p class="title">
+            {{ curriculum.title }}
+          </p>
+          <p class="received-date">
+            {{ curriculum.receivedDate }}
+          </p>
           <div class="description">{{ curriculum.description }}</div>
         </swiper-slide>
         <curriculum-step
           v-if="recursionStep"
           :data="recursionStep"
           :order="1"
-          :swiper-option="swiperOption"
         />
       </swiper>
     </main>
@@ -80,7 +83,7 @@ export default {
       return result
     },
     onClickClose () {
-
+      this.$router.push('/')
     },
     mock () {
       // provisional
@@ -137,7 +140,7 @@ header .screen-close {
 }
 
 .swiper-container {
-  width: 100%;
+  width: 100vw;
   background: #fff;
 }
 
