@@ -5,6 +5,7 @@ import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import NoteList from '@/components/NoteList'
 import Curriculum from '@/components/Curriculum'
+import Live from '@/components/Live'
 
 Vue.use(Router)
 
@@ -24,6 +25,11 @@ export default new Router({
       path: '/curriculum/:curriculumId',
       name: 'curriculum',
       component: Curriculum
+    },
+    {
+      path: '/live',
+      name: 'live',
+      component: Live
     }
   ]
 })
