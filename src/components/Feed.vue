@@ -1,19 +1,17 @@
 <template>
   <section class="screen-box">
     <feed-header title="リーフォーマッ"></feed-header>
-    <transition name="fade">
-      <div class="box-notice" v-if="!isNoticeConfirmed">
-        <div class="box-notice__inner clearfix">
-          <div class="box-notice__left">
-            <p>まもなくLIVE面談が始まります！</p>
-            <p>{{ noticeTime }}</p>
-          </div>
-          <div class="box-notice__right clearfix">
-            <button @click="onNoticeConfirm">入室する</button>
-          </div>
+    <div class="box-notice" v-if="!isNoticeConfirmed">
+      <div class="box-notice__inner clearfix">
+        <div class="box-notice__left">
+          <p>まもなくLIVE面談が始まります！</p>
+          <p>{{ noticeTime }}</p>
+        </div>
+        <div class="box-notice__right clearfix">
+          <button @click="onGoLive">入室する</button>
         </div>
       </div>
-    </transition>
+    </div>
     <main class="screen-box__main">
       <section class="feed__section feed__section-curriculum">
         <header>
@@ -65,7 +63,7 @@ import FeedHeader from "./FeedHeader.vue";
 import NoteItem from "./NoteItem.vue";
 
 export default {
-  name: "note-list",
+  name: "home-feed",
   data () {
     return {
       noticeTime: '4月2日 15:30〜16:30',
@@ -77,7 +75,7 @@ export default {
     NoteItem
   },
   mounted () {
-    this.$store.dispatch( 'getNoteList' )
+//    this.$store.dispatch( 'getNoteList' )
   },
   computed: {
     currentCurriculum: function () {
@@ -90,10 +88,10 @@ export default {
   },
   methods: {
     goScreen: function (screen) {
-
+      this.$store.dispatch( 'goScreen', screen )
     },
-    onNoticeConfirm: function () {
-      this.isNoticeConfirmed = true;
+    onGoLive: function () {
+      this.$store.commit( 'updateFloatScreen', 'live' )
     }
   }
 };

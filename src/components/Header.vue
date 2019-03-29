@@ -3,19 +3,30 @@
     <div class="header">
       <h1>{{ title }}</h1>
       <div class="header__icon">
-        <span class="header__icon-back"></span>
+        <span class="header__icon-back" @click="onGoScreen"></span>
       </div>
     </div>
   </header>
 </template>
 
 <script>
+  import animation from '../animation'
+
   export default {
     name: 'header',
     props: {
       title: {
         type: String,
-        required: true,
+        required: true
+      }
+    },
+    methods: {
+      onGoScreen: function () {
+        if (this.$store.state.currentFloatScreen) {
+          this.$store.commit ( 'updateFloatScreen', '' )
+        } else {
+          this.$store.dispatch ( 'goScreen', animation.mainScreen )
+        }
       }
     }
   }

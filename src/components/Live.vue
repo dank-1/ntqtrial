@@ -92,7 +92,7 @@ const LIVE_INCOMING_CALL = 'incoming_call'
 const LIVE_JOINING = 'joining'
 
 export default {
-  name: 'Live',
+  name: 'live',
   components: { Header },
   data () {
     return {
