@@ -17,8 +17,9 @@ export default {
     },
     {
       name: 'live',
-      position: 'top',
-      close: 'top'
+      position: 'bottom',
+      open: 'top',
+      close: 'bottom'
     }
   ]
 }

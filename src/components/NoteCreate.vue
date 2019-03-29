@@ -3,16 +3,18 @@
     <Header title="新規投稿"></Header>
     <main>
       <div class="video-section">
-        <div class="video-section__choose" v-if="!form.video" @click="onAddVideo">
-          <img src="/static/img/icons/library.png" />
-          <span>動画を選択</span>
+        <div class="video-section__inner">
+          <div class="video-section__choose" v-if="!form.video" @click="onAddVideo">
+            <img src="/static/img/icons/library.png" />
+            <span>動画を選択</span>
+          </div>
+          <div class="video-section__preview" v-if="form.video">
+            <video width="100%" height="100%" controls>
+              <source :src="videoUrl" type="video/mp4">
+            </video>
+          </div>
+          <input type="file" class="video-section__file" ref="file" @change="onChooseVideo" />
         </div>
-        <div class="video-section__preview" v-if="form.video">
-          <video width="100%" height="100%" controls>
-            <source :src="videoUrl" type="video/mp4">
-          </video>
-        </div>
-        <input type="file" class="video-section__file" ref="file" @change="onChooseVideo" />
       </div>
       <div class="memo-section">
         <textarea placeholder="コメントを入力" v-model="form.memo"></textarea>
@@ -86,10 +88,11 @@
     border-bottom: 1px solid #d0d1d1;
   }
 
-  .video-section > * {
+  .video-section__inner > * {
     width: 335px;
     height: 335px;
     margin: 0 auto;
+    max-width: 100%;
   }
 
   .video-section__choose {
@@ -166,6 +169,7 @@
     font-size: 20px;
     font-weight: 300;
     outline: 0;
+    width: 100px;
   }
 
   .time-section__input input::-webkit-outer-spin-button,
