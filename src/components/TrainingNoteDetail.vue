@@ -2,25 +2,23 @@
 section(class="screen-box")
   Header(:title="trainingNote.receivedDate" url="/")
   main(class="screen-box__main")
-    .training-note-detail
-      .training-note-detail__video-thumbnail
-        span(class="training-note-detail__video-thumbnail__span" :style="[{'background-image': 'url('+trainingNote.thumbnailUrl+')'}]")
-        // icon(name="play" class="icon-play")
-      p(class="training-note-detail__description") {{trainingNote.description}}
-      p(class="training-note-detail__received_date") {{trainingNote.receivedDate}}
+    .training-note-detail__video-thumbnail
+      span(class="training-note-detail__video-thumbnail__span" :style="[{'background-image': 'url('+trainingNote.thumbnailUrl+')'}]")
+      // icon(name="play" class="icon-play")
+    p(class="training-note-detail__description") {{trainingNote.description}}
+    p(class="training-note-detail__received_date") {{trainingNote.receivedDate}}
 </template>
 
 <style>
 .screen-box__main {
   padding: 16px;
 }
-.training-note-detail {
+.training-note-detail__video-thumbnail {
   position: absolute;
+  display: block;
   left: 0;
   right: 0;
-}
-.training-note-detail__video-thumbnail {
-  width: 100%;
+  margin: 0 16px 0 16px;
   padding-top: 100%;
   border-radius: 12px;
 }
@@ -40,6 +38,8 @@ p {
   word-wrap:break-word;
 }
 .training-note-detail__description {
+}
+.training-note-detail__received_date {
 }
 </style>
 
