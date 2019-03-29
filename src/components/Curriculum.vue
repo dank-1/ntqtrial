@@ -90,7 +90,7 @@ export default {
       return {
         id: 1,
         title: '基礎練習　パドブレターン（ピルエット）',
-        description: 'パドブレとは足をクロスさせながらリズムを取るステップ。ヒップホップだけでなく、ハウスダンス、ジャズ・ダンス、バレエなど全てのダンスに共通して行われる、ダンスの基礎ステップとなります。動きは各ジャンル共通ですが、踊り方やステップの踏み方には若干違いがあります。nヒップホップの上達には欠かせないステップとなっていますので、ぜひマスターして下さい。',
+        description: 'パドブレとは足をクロスさせながらリズムを取るステップ。ヒップホップだけでなく、ハウスダンス、ジャズ・ダンス、バレエなど全てのダンスに共通して行われる、ダンスの基礎ステップとなります。動きは各ジャンル共通ですが、踊り方やステップの踏み方には若干違いがあります。\nヒップホップの上達には欠かせないステップとなっていますので、ぜひマスターして下さい。',
         coachName: 'MISAKI先生',
         receivedDate: '2019-03-26',
         trainingHours: '48',
@@ -100,17 +100,17 @@ export default {
           {
             videoUrl: 'http://techslides.com/demos/sample-videos/small.mp4',
             thumbnailUrl: 'https://www.omorey.com/wp-content/uploads/2016/10/maxresdefault.jpg',
-            description: 'step description\nstep description',
+            description: '★膝は出来る限り伸ばした状態で\n★足裏をよく使って行う\n★常にアンドゥ・オールを意識（つま先と膝が外をむくように）',
           },
           {
             videoUrl: 'http://techslides.com/demos/sample-videos/small.mp4',
             thumbnailUrl: 'https://www.omorey.com/wp-content/uploads/2016/10/maxresdefault.jpg',
-            description: 'step description\nstep description',
+            description: '★膝は出来る限り伸ばした状態で\n★足裏をよく使って行う\n★常にアンドゥ・オールを意識（つま先と膝が外をむくように）',
           },
           {
             videoUrl: 'http://techslides.com/demos/sample-videos/small.mp4',
             thumbnailUrl: 'https://www.omorey.com/wp-content/uploads/2016/10/maxresdefault.jpg',
-            description: 'step description\nstep description',
+            description: '★膝は出来る限り伸ばした状態で\n★足裏をよく使って行う\n★常にアンドゥ・オールを意識（つま先と膝が外をむくように）',
           }
         ]
       }
