@@ -1,15 +1,27 @@
 <template>
   <div id="app">
-    <section id="main">
+    <section id="main" v-touch:swipe="onSwipeHandler">
       <section id="main-inner" :class="swipeClass">
         <feed></feed>
         <template v-for="screen in animation.screens">
-          <component :is="screen.name" :class="[`position-${screen.position}`, { 'screen--active' : $store.state.currentScreenActive == screen.name }, 'side-screen']"></component>
+          <component
+            :is="screen.name"
+            :class="[
+              `position-${screen.position}`,
+              { 'screen--active' : $store.state.currentScreenActive == screen.name },
+              'side-screen'
+            ]"></component>
         </template>
       </section>
 
       <template v-for="screen in animation.floatScreens">
-        <component :is="screen.name" :class="[`float-screen--${screen.position}`, { 'float-screen--active' : $store.state.currentFloatScreen == screen.name }, 'float-screen']"></component>
+        <component
+          :is="screen.name"
+          :class="[
+            `float-screen--${screen.position}`,
+            { 'float-screen--active' : $store.state.currentFloatScreen == screen.name },
+            'float-screen'
+          ]"></component>
       </template>
       <note-create class="float-screen float-screen--right"></note-create>
     </section>
@@ -33,6 +45,23 @@
     data () {
       return {
         animation
+      }
+    },
+    methods: {
+      onSwipeHandler: function ( direction ) {
+        let screenName = '';
+
+        this.animation.floatScreens.forEach(( screen ) => {
+          if ( this.$store.state.currentFloatScreen ) {
+            if ( this.$store.state.currentFloatScreen === screen.name && screen.position === direction ) {
+              screenName = ''
+            }
+          } else if ( screen.swipeDirection === direction ) {
+            screenName = screen.name
+          }
+        })
+
+        this.$store.commit( 'updateFloatScreen', screenName )
       }
     },
     computed: {

@@ -3,7 +3,7 @@
     <div class="header">
       <h1>{{ title }}</h1>
       <div class="header__icon">
-        <span class="header__icon-back" @click="onGoHome"></span>
+        <span class="header__icon-back" @click="onGoScreen"></span>
       </div>
     </div>
   </header>
@@ -21,8 +21,12 @@
       }
     },
     methods: {
-      onGoHome: function () {
-        this.$store.dispatch( 'goScreen', animation.mainScreen )
+      onGoScreen: function () {
+        if (this.$store.state.currentFloatScreen) {
+          this.$store.commit ( 'updateFloatScreen', '' )
+        } else {
+          this.$store.dispatch ( 'goScreen', animation.mainScreen )
+        }
       }
     }
   }

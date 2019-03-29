@@ -93,12 +93,9 @@ export default {
       this.$store.dispatch( 'goScreen', screen )
     },
     onNoticeConfirm: function () {
-      this.isNoticeConfirmed = true;
+//      this.isNoticeConfirmed = true;
+      this.$store.commit('updateFloatScreen', 'note-create')
     }
-  },
-  mounted () {
-//    this.$store.dispatch('getNoteList');
-    this.$store.commit('updateFloatScreen', 'note-create')
   }
 };
 </script>

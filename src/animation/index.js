@@ -11,7 +11,8 @@ export default {
   floatScreens: [
     {
       name: 'note-create',
-      position: 'right'
+      position: 'right',
+      swipeDirection: 'left'
     }
   ]
 }
