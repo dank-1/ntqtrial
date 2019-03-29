@@ -10,15 +10,17 @@
 </template>
 
 <script>
-export default {
-  name: 'header',
-  props: {
-    title: {
-      type: String,
-      required: true
+  import animation from '../animation'
+
+  export default {
+    name: 'header',
+    props: {
+      title: {
+        type: String,
+        required: true
+      }
     }
   }
-}
 </script>
 
 <style>

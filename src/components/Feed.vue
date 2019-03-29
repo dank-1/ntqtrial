@@ -90,11 +90,14 @@ export default {
   },
   methods: {
     goScreen: function (screen) {
-
+      this.$store.dispatch( 'goScreen', screen )
     },
     onNoticeConfirm: function () {
       this.isNoticeConfirmed = true;
     }
+  },
+  mounted () {
+    this.$store.dispatch('getNoteList');
   }
 };
 </script>

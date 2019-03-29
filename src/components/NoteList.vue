@@ -29,7 +29,7 @@
       NoteItem
     },
     mounted () {
-      this.$store.dispatch('getNoteList');
+
     },
     computed: mapState([
       'noteList'
