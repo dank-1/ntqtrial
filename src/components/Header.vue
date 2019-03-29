@@ -10,15 +10,6 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-export default {
-  name: 'header',
-  props: {
-    title: {
-      type: String,
-      required: true,
-    }
-=======
   export default {
     name: 'header',
     props: {
@@ -31,7 +22,6 @@ export default {
 </script>
 
 <style>
-
   .header {
     background: #fff;
     position: relative;
@@ -45,22 +35,6 @@ export default {
     font-weight: 600;
     line-height: 56px;
     text-align: center;
->>>>>>> master
-  }
-
-<<<<<<< HEAD
-<style>
-
-  .header {
-    background: #fff;
-    position: relative;
-  }
-
-  .header h1 {
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 56px;
-    text-align: center;
   }
 
   .header__icon {
@@ -69,14 +43,6 @@ export default {
     top: 12px;
   }
 
-=======
-  .header__icon {
-    position: absolute;
-    left: 16px;
-    top: 12px;
-  }
-
->>>>>>> master
   .header__icon-back {
     display: block;
     width: 32px;
