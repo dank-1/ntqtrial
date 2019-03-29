@@ -6,15 +6,15 @@
     />
     <main class="screen-box__main curriculum-list">
       <div
-        v-for="(curriculum, index) in curriculumList"
-        :key="index"
+        v-for="curriculum in curriculumList"
+        :key="curriculum.id"
         :style="styleObject( curriculum )"
         class="curriculum-box"
       >
         <p>{{ curriculum.title }}</p>
         <div
           class="curriculum-box__subcontent"
-          @click="$router.push(`/curriculum/${index}`)"
+          @click="onClickCurriculum(curriculum.id)"
         >
           <label class="received">{{ curriculum.receiveDate }}</label>
           <label class="coach-name">{{ curriculum.coachName }}</label>
@@ -27,12 +27,19 @@
 <script>
 import Header from './Header.vue'
 
+const SIDE_MARGIN = 20
+
 export default {
   name: 'CurriculumList',
   components: { Header },
   data () {
     return {
       curriculumList: {},
+    }
+  },
+  computed: {
+    curriculumThumbnailSize () {
+      return window.innerWidth-SIDE_MARGIN*2
     }
   },
   created () {
@@ -42,31 +49,37 @@ export default {
     onClickClose () {
       this.$router.push('/')
     },
+    onClickCurriculum(id) {
+      this.$router.push({name: 'curriculum', params: { curriculumId: id } })
+    },
     styleObject (curriculum) {
       return {
-        background: `url("${curriculum.thubnailUrl}") no-repeat`,
+        background: `url("${curriculum.thumbnailUrl}") no-repeat`,
         'background-position': 'center center',
         'background-size': 'contain',
-        width: `${window.innerWidth-40}px`,
-        height: `${window.innerWidth-40}px`
+        width: `${this.curriculumThumbnailSize}px`,
+        height: `${this.curriculumThumbnailSize}px`
       }
     },
     mock () {
       return [
         {
-          thubnailUrl: "static/img/curriculum1.png",
+          id: 1,
+          thumbnailUrl: "static/img/curriculum1.png",
           title: "基礎練習　パドブレターン（ピルエット）",
           receiveDate: "2018.07.28",
           coachName: "MISAKI先生"
         },
         {
-          thubnailUrl: "static/img/curriculum2.png",
+          id: 2,
+          thumbnailUrl: "static/img/curriculum2.png",
           title: "アイソレーション",
           receiveDate: "2018.07.28",
           coachName: "MISAKI先生"
         },
         {
-          thubnailUrl: "static/img/curriculum3.png",
+          id: 3,
+          thumbnailUrl: "static/img/curriculum3.png",
           title: "ムーンウォーク① 足の動かし方",
           receiveDate: "2018.07.28",
           coachName: "MISAKI先生"
