@@ -10,6 +10,7 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 export default {
   name: 'header',
   props: {
@@ -17,10 +18,37 @@ export default {
       type: String,
       required: true,
     }
+=======
+  export default {
+    name: 'header',
+    props: {
+      title: {
+        type: String,
+        required: true,
+      }
+    }
   }
-}
 </script>
 
+<style>
+
+  .header {
+    background: #fff;
+    position: relative;
+    box-shadow: 0 2px 16px 0px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 0 2px 16px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0 2px 16px 0px rgba(0,0,0,0.1);
+  }
+
+  .header h1 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 56px;
+    text-align: center;
+>>>>>>> master
+  }
+
+<<<<<<< HEAD
 <style>
 
   .header {
@@ -41,6 +69,14 @@ export default {
     top: 12px;
   }
 
+=======
+  .header__icon {
+    position: absolute;
+    left: 16px;
+    top: 12px;
+  }
+
+>>>>>>> master
   .header__icon-back {
     display: block;
     width: 32px;

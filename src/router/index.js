@@ -6,6 +6,7 @@ import Hello from '@/components/Hello'
 import NoteList from '@/components/NoteList'
 import Live from '@/components/Live'
 import Feed from '@/components/Feed'
+import NoteCreate from '@/components/NoteCreate'
 
 Vue.use(Router)
 
@@ -30,6 +31,11 @@ export default new Router({
       path: '/feed',
       name: 'feed',
       component: Feed
+    },
+    {
+      path: '/note-create',
+      name: 'note-create',
+      component: NoteCreate
     }
   ]
 })
