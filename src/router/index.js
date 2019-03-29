@@ -5,6 +5,7 @@ import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import NoteList from '@/components/NoteList'
 import CurriculumList from '@/components/CurriculumList'
+import Curriculum from '@/components/Curriculum'
 import Live from '@/components/Live'
 import Feed from '@/components/Feed'
 import NoteCreate from '@/components/NoteCreate'
@@ -27,6 +28,11 @@ export default new Router({
       path: '/curriculum-list',
       name: 'curriculum-list',
       component: CurriculumList
+    },
+    {
+      path: '/curriculum/:curriculumId',
+      name: 'curriculum',
+      component: Curriculum
     },
     {
       path: '/live',
