@@ -12,7 +12,13 @@ export default {
     {
       name: 'note-create',
       position: 'right',
-      swipeDirection: 'left'
+      open: 'left',
+      close: 'right'
+    },
+    {
+      name: 'live',
+      position: 'top',
+      close: 'top'
     }
   ]
 }

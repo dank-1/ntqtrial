@@ -32,6 +32,7 @@
   import NoteList from './components/NoteList.vue'
   import Feed from './components/Feed.vue'
   import NoteCreate from './components/NoteCreate.vue'
+  import Live from './components/Live.vue'
   import animation from './animation'
 
   export default {
@@ -39,7 +40,8 @@
     components: {
       NoteCreate,
       NoteList,
-      Feed
+      Feed,
+      Live
     },
     data () {
       return {
@@ -48,19 +50,22 @@
     },
     methods: {
       onSwipeHandler: function ( direction ) {
-        let screenName = '';
+        let screenName = null;
 
         this.animation.floatScreens.forEach(( screen ) => {
           if ( this.$store.state.currentFloatScreen ) {
-            if ( this.$store.state.currentFloatScreen === screen.name && screen.position === direction ) {
+            if ( this.$store.state.currentFloatScreen === screen.name
+                && typeof screen.close !== 'undefined' && screen.close === direction ) {
               screenName = ''
             }
-          } else if ( screen.swipeDirection === direction ) {
+          } else if ( typeof screen.open !== 'undefined' && screen.open === direction ) {
             screenName = screen.name
           }
         })
 
-        this.$store.commit( 'updateFloatScreen', screenName )
+        if ( screenName !== null ) {
+          this.$store.commit('updateFloatScreen', screenName)
+        }
       }
     },
     computed: {
@@ -142,6 +147,7 @@
     transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
   }
 
   .screen--active {
@@ -177,24 +183,28 @@
     transform: translate(-100%, 0);
     -webkit-transform: translate(-100%, 0);
     -moz-transform: translate(-100%, 0);
+    -o-transform: translate(-100%, 0);
   }
 
   #main-inner.swipe-left {
     transform: translate(100%, 0);
     -webkit-transform: translate(100%, 0);
     -moz-transform: translate(100%, 0);
+    -o-transform: translate(100%, 0);
   }
 
   #main-inner.swipe-top {
     transform: translate(0, 100%);
     -webkit-transform: translate(0, 100%);
     -moz-transform: translate(0, 100%);
+    -o-transform: translate(0, 100%);
   }
 
   #main-inner.swipe-bottom {
     transform: translate(0, -100%);
     -webkit-transform: translate(0, -100%);
     -moz-transform: translate(0, -100%);
+    -o-transform: translate(0, -100%);
   }
 
   .screen-box {
@@ -224,6 +234,7 @@
     transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
     z-index: 99999;
   }
 
@@ -232,9 +243,46 @@
     top: 0;
   }
 
+  .float-screen--left {
+    left: -100%;
+    top: 0;
+  }
+
+  .float-screen--top {
+    left: 0;
+    top: -100%;
+  }
+
+  .float-screen--bottom {
+    left: 0;
+    top: 100%;
+  }
+
   .float-screen--right.float-screen--active {
     transform: translate(-100%, 0);
     -webkit-transform: translate(-100%, 0);
     -moz-transform: translate(-100%, 0);
+    -o-transform: translate(-100%, 0);
+  }
+
+  .float-screen--left.float-screen--active {
+    transform: translate(100%, 0);
+    -webkit-transform: translate(100%, 0);
+    -moz-transform: translate(100%, 0);
+    -o-transform: translate(100%, 0);
+  }
+
+  .float-screen--top.float-screen--active {
+    transform: translate(0, 100%);
+    -webkit-transform: translate(0, 100%);
+    -moz-transform: translate(0, 100%);
+    -o-transform: translate(0, 100%);
+  }
+
+  .float-screen--bottom.float-screen--active {
+    transform: translate(0, -100%);
+    -webkit-transform: translate(0, -100%);
+    -moz-transform: translate(0, -100%);
+    -o-transform: translate(0, -100%);
   }
 </style>
