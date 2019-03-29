@@ -2,7 +2,7 @@
   <div id="app">
     <section id="main">
       <section id="main-inner" :class="swipeClass">
-        <hello></hello>
+        <feed></feed>
         <template v-for="screen in animation.screens">
           <component :is="screen.name" :class="[`position-${screen.position}`, { 'screen--active' : $store.state.currentScreenActive == screen.name }, 'side-screen']"></component>
         </template>
@@ -14,14 +14,14 @@
 <script>
   import { mapState } from 'vuex'
   import NoteList from './components/NoteList.vue'
-  import Hello from './components/Hello.vue'
+  import Feed from './components/Feed.vue'
   import animation from './animation'
 
   export default {
     name: 'App',
     components: {
       NoteList,
-      Hello
+      Feed
     },
     data () {
       return {
@@ -76,6 +76,8 @@
   body {
     line-height: 1;
     color: #2c2e33;
+    font-family: 'Hiragino Sans';
+    font-weight: 300;
   }
   ol, ul {
     list-style: none;
@@ -91,35 +93,6 @@
   table {
     border-collapse: collapse;
     border-spacing: 0;
-  }
-
-  .screen-box {
-    background: #fdfdfd;
-    width: 100vw;
-    height: 100vh;
-    overflow: scroll;
-  }
-
-  .item-box {
-    border-radius: 5px;
-    background: #fff;
-    box-shadow: 0px 0px 5px 1px #eaeaea;
-    -moz-box-shadow: 0px 0px 5px 1px #eaeaea;
-    -webkit-box-shadow: 0px 0px 5px 1px #eaeaea;
-  }
-
-  .item-box__media img {
-    width:100%;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-  }
-
-  .item-box__content {
-    padding: 10px;
-  }
-
-  .screen-box__main {
-    padding: 20px;
   }
 
   #main {
@@ -187,5 +160,27 @@
     transform: translate(0, -100%);
     -webkit-transform: translate(0, -100%);
     -moz-transform: translate(0, -100%);
+  }
+
+  .screen-box {
+    background: #fdfdfd;
+    width: 100vw;
+    height: 100vh;
+    overflow: scroll;
+  }
+
+  .screen-box__main {
+    padding: 16px 16px 147px 16px;
+  }
+
+  button {
+    cursor: pointer;
+    outline: none;
+  }
+
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
   }
 </style>

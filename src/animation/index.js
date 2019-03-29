@@ -1,7 +1,7 @@
 'use strict'
 
 export default {
-  mainScreen: 'hello',
+  mainScreen: 'home-feed',
   screens: [
     {
       name: 'note-list',

@@ -1,9 +1,9 @@
 <template>
   <header>
-    <div class="header">
+    <div class="feed-header">
       <h1>{{ title }}</h1>
-      <div class="header__icon">
-        <span class="header__icon-back"></span>
+      <div class="feed-header__avatar">
+        <img src="" />
       </div>
     </div>
   </header>
@@ -11,42 +11,44 @@
 
 <script>
 export default {
-  name: 'header',
+  name: 'feed-header',
   props: {
     title: {
       type: String,
-      required: true
+      required: true,
     }
+  },
+  methods: {
+
   }
 }
 </script>
 
 <style>
-
-  .header {
+  .feed-header {
     background: #fff;
     position: relative;
   }
 
-  .header h1 {
+  .feed-header h1 {
     font-size: 16px;
     font-weight: 600;
-    line-height: 56px;
+    line-height: 72px;
     text-align: center;
   }
 
-  .header__icon {
+  .feed-header__avatar {
     position: absolute;
     left: 16px;
-    top: 12px;
+    top: 50%;
+    margin-top: -16px;
   }
 
-  .header__icon-back {
+  .feed-header__avatar img {
     display: block;
     width: 32px;
     height: 32px;
-    background: url("/static/img/icons/icon_back.png") no-repeat;
-    cursor: pointer;
+    border-radius: 32px;
   }
 
 </style>

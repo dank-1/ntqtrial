@@ -76,7 +76,7 @@
     -o-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
     height: 40px;
-    line-heightQ: 40px;
+    line-height: 40px;
   }
 
 </style>
