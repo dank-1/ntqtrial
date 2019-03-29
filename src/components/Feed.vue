@@ -75,7 +75,7 @@ export default {
     NoteItem
   },
   mounted () {
-    this.$store.dispatch( 'getNoteList' )
+//    this.$store.dispatch( 'getNoteList' )
   },
   computed: {
     currentCurriculum: function () {

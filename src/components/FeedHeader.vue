@@ -3,7 +3,7 @@
     <div class="feed-header">
       <h1>{{ title }}</h1>
       <div class="feed-header__avatar">
-        <img src="" />
+        <img :src="avatarUrl" />
       </div>
     </div>
   </header>
@@ -20,6 +20,11 @@ export default {
   },
   methods: {
 
+  },
+  data () {
+    return {
+      avatarUrl: this.$store.state.profile.avatarUrl
+    }
   }
 }
 </script>

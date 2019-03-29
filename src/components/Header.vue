@@ -33,7 +33,6 @@
 </script>
 
 <style>
-
   .header {
     background: #fff;
     position: relative;

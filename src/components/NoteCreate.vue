@@ -64,7 +64,7 @@
         }
       },
       onSubmit: function () {
-
+        this.$store.commit( 'updateFloatScreen', '' )
       }
     },
     computed: {
