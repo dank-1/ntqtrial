@@ -97,7 +97,8 @@ export default {
     }
   },
   mounted () {
-    this.$store.dispatch('getNoteList');
+//    this.$store.dispatch('getNoteList');
+    this.$store.commit('updateFloatScreen', 'note-create')
   }
 };
 </script>

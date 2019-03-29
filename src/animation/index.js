@@ -9,6 +9,9 @@ export default {
     }
   ],
   floatScreens: [
-
+    {
+      name: 'note-create',
+      position: 'right'
+    }
   ]
 }

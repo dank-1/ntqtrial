@@ -33,6 +33,9 @@
   .header {
     background: #fff;
     position: relative;
+    box-shadow: 0 2px 16px 0px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 0 2px 16px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0 2px 16px 0px rgba(0,0,0,0.1);
   }
 
   .header h1 {

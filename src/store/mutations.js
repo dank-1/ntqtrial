@@ -9,5 +9,8 @@ export default {
   },
   updateScreenActive: ( state, screen ) => {
     state.currentScreenActive = screen
+  },
+  updateFloatScreen: ( state, screen ) => {
+    state.currentFloatScreen = screen
   }
 }

@@ -7,6 +7,11 @@
           <component :is="screen.name" :class="[`position-${screen.position}`, { 'screen--active' : $store.state.currentScreenActive == screen.name }, 'side-screen']"></component>
         </template>
       </section>
+
+      <template v-for="screen in animation.floatScreens">
+        <component :is="screen.name" :class="[`float-screen--${screen.position}`, { 'float-screen--active' : $store.state.currentFloatScreen == screen.name }, 'float-screen']"></component>
+      </template>
+      <note-create class="float-screen float-screen--right"></note-create>
     </section>
   </div>
 </template>
@@ -15,11 +20,13 @@
   import { mapState } from 'vuex'
   import NoteList from './components/NoteList.vue'
   import Feed from './components/Feed.vue'
+  import NoteCreate from './components/NoteCreate.vue'
   import animation from './animation'
 
   export default {
     name: 'App',
     components: {
+      NoteCreate,
       NoteList,
       Feed
     },
@@ -182,5 +189,24 @@
     content: "";
     clear: both;
     display: table;
+  }
+
+  .float-screen {
+    position: absolute;
+    transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    z-index: 99999;
+  }
+
+  .float-screen--right {
+    left: 100%;
+    top: 0;
+  }
+
+  .float-screen--right.float-screen--active {
+    transform: translate(-100%, 0);
+    -webkit-transform: translate(-100%, 0);
+    -moz-transform: translate(-100%, 0);
   }
 </style>

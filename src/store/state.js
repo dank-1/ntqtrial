@@ -4,6 +4,7 @@ export default {
   noteList: [],
   currentScreen: '',
   currentScreenActive: '',
+  currentFloatScreen: '',
   curriculumList: [
   {
     title: "基礎練習　パドブレターン（ピルエット）",
