@@ -23,7 +23,6 @@
             'float-screen'
           ]"></component>
       </template>
-      <note-create class="float-screen float-screen--right"></note-create>
     </section>
   </div>
 </template>
