@@ -3,7 +3,7 @@
     <div class="header">
       <h1>{{ title }}</h1>
       <div class="header__icon">
-        <span class="header__icon-back"></span>
+        <span class="header__icon-back" @click="onGoHome"></span>
       </div>
     </div>
   </header>
@@ -18,6 +18,11 @@
       title: {
         type: String,
         required: true
+      }
+    },
+    methods: {
+      onGoHome: function () {
+        this.$store.dispatch( 'goScreen', animation.mainScreen )
       }
     }
   }
