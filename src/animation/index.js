@@ -6,6 +6,10 @@ export default {
     {
       name: 'note-list',
       position: 'right'
+    },
+    {
+      name: 'curriculum-list',
+      position: 'right'
     }
   ],
   floatScreens: [

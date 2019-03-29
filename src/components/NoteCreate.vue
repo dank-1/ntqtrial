@@ -61,7 +61,7 @@
       onChooseVideo: function () {
         let video = this.$refs.file.files[0];
 
-        if (video.type === 'video/mp4') {
+        if (video.type.indexOf('video') !== -1) {
           this.form.video = video
         }
       },

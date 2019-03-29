@@ -2,7 +2,6 @@
   <section class="screen-box">
     <Header
       title="カリキュラム一覧"
-      url="/"
     />
     <main class="screen-box__main curriculum-list">
       <div
@@ -28,7 +27,7 @@ import Header from './Header.vue'
 const SIDE_MARGIN = 20
 
 export default {
-  name: 'CurriculumList',
+  name: 'curriculum-list',
   components: { Header },
   data () {
     return {

@@ -30,6 +30,7 @@
 <script>
   import { mapState } from 'vuex'
   import NoteList from './components/NoteList.vue'
+  import CurriculumList from './components/CurriculumList.vue'
   import Feed from './components/Feed.vue'
   import NoteCreate from './components/NoteCreate.vue'
   import Live from './components/Live.vue'
@@ -40,6 +41,7 @@
     components: {
       NoteCreate,
       NoteList,
+      CurriculumList,
       Feed,
       Live
     },
@@ -212,6 +214,7 @@
     width: 100vw;
     height: 100vh;
     overflow: scroll;
+    -webkit-overflow-scrolling:touch;
   }
 
   .screen-box__main {

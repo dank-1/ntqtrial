@@ -46,7 +46,7 @@
 
 <style>
   .create-note {
-    position: fixed;
+    /*position: fixed;*/
     bottom: 24px;
     left: 100%;
     padding: 0 24px;
