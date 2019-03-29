@@ -10,12 +10,10 @@
         :key="curriculum.id"
         :style="styleObject( curriculum )"
         class="curriculum-box"
+        @click="onClickCurriculum(curriculum.id)"
       >
         <p>{{ curriculum.title }}</p>
-        <div
-          class="curriculum-box__subcontent"
-          @click="onClickCurriculum(curriculum.id)"
-        >
+        <div class="curriculum-box__subcontent">
           <label class="received">{{ curriculum.receiveDate }}</label>
           <label class="coach-name">{{ curriculum.coachName }}</label>
         </div>
