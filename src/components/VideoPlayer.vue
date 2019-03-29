@@ -29,8 +29,8 @@ export default {
         return Object.keys(purposeTypes).indexOf(value) !== -1
       }
     },
-    videoUrl: { type: String },
-    thumbnailUrl: { type: String }
+    videoUrl: { type: String, required: true },
+    thumbnailUrl: { type: String, required: true }
   },
   data () {
     return {

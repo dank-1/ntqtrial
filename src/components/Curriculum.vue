@@ -7,7 +7,7 @@
       />
     </header>
     <main>
-      <swiper :options="swiperOption">
+      <swiper :options="swiperOptions">
         <swiper-slide class="curriculum-overview">
           <video-player
             class="player"
@@ -53,7 +53,7 @@ export default {
   data () {
     return {
       curriculum: {},
-      swiperOption: {
+      swiperOptions: {
         direction: 'vertical',
         slidesPerView: 'auto',
         spaceBetween: 30,
@@ -61,27 +61,7 @@ export default {
       }
     }
   },
-  computed: {
-    recursionStep () {
-      const stepNum = this.curriculum.steps.length
-      if (stepNum === 0) {
-        return []
-      }
-      return this.decorateStep(stepNum-1)
-    }
-  },
   methods: {
-    decorateStep (stepNum, index=0) {
-      var result = {
-        videoUrl: this.curriculum.steps[index].videoUrl,
-        thumbnailUrl: this.curriculum.steps[index].thumbnailUrl,
-        description: this.curriculum.steps[index].description,
-      }
-      result['step'] = (index !== stepNum)
-                       ? this.decorateStep(stepNum, index+1)
-                       : null
-      return result
-    },
     onClickClose () {
       this.$router.push('/')
     },
@@ -154,9 +134,7 @@ header .screen-close {
   height: 90vh;
 }
 .title, .received-date, .description, .training-time {
-  margin-left: 24px;
-  margin-right: 24px;
-  margin-top: 16px;
+  margin: 16px 24px 0;
 }
 
 .title {

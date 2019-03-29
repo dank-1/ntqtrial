@@ -54,8 +54,7 @@ export default {
   margin-bottom: 24px;
 }
 
-.curriculum-step .player, .curriculum-step .description {
-  margin-left: 16px;
-  margin-right: 16px;
+.curriculum-step .player {
+  margin: 0 16px;
 }
 </style>
