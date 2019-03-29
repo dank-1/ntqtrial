@@ -7,11 +7,8 @@
       />
     </header>
     <main>
-      <swiper
-        :options="swiperOption"
-        class="swiper-container"
-      >
-        <swiper-slide class="swiper-slide">
+      <swiper :options="swiperOption">
+        <swiper-slide class="curriculum-overview">
           <video-player
             class="player"
             :video-url="curriculum.videoUrl"
@@ -21,14 +18,17 @@
             {{ curriculum.title }}
           </p>
           <p class="received-date">
-            {{ curriculum.receivedDate }}
+            <label>{{ curriculum.receivedDate }}</label>
+            <label>{{ curriculum.coachName }}</label>
           </p>
           <div class="description">{{ curriculum.description }}</div>
+          <p class="training-time">{{ `練習時間のめやす：${curriculum.trainingHours}時間` }}</p>
         </swiper-slide>
         <curriculum-step
-          v-if="recursionStep"
-          :data="recursionStep"
-          :order="1"
+          v-for="(step, index) in curriculum.steps"
+          :key="index"
+          :data="step"
+          :order="index+1"
         />
       </swiper>
     </main>
@@ -57,7 +57,7 @@ export default {
         direction: 'vertical',
         slidesPerView: 'auto',
         spaceBetween: 30,
-        nested: true
+        height: window.innerHeight
       }
     }
   },
@@ -89,9 +89,11 @@ export default {
       // provisional
       return {
         id: 1,
-        title: 'title',
-        description: 'curriculum description\ncurriculum description',
+        title: '基礎練習　パドブレターン（ピルエット）',
+        description: 'パドブレとは足をクロスさせながらリズムを取るステップ。ヒップホップだけでなく、ハウスダンス、ジャズ・ダンス、バレエなど全てのダンスに共通して行われる、ダンスの基礎ステップとなります。動きは各ジャンル共通ですが、踊り方やステップの踏み方には若干違いがあります。nヒップホップの上達には欠かせないステップとなっていますので、ぜひマスターして下さい。',
+        coachName: 'MISAKI先生',
         receivedDate: '2019-03-26',
+        trainingHours: '48',
         videoUrl: 'https://www.radiantmediaplayer.com/media/bbb-360p.mp4',
         thumbnailUrl: 'https://dews365.com/wp-content/uploads/2018/06/24071_20180420GENE01.jpg',
         steps: [
@@ -138,18 +140,20 @@ header .screen-close {
   height: 40px;
   z-index: 100;
 }
-
+/* 
 .swiper-container {
   width: 100vw;
   background: #fff;
-}
+} */
 
 .screen-box {
   color: rgba(22,23,26,1);
   font-family: "Hiragino Sans";
 }
-
-.title, .received-date, .description {
+.curriculum-overview {
+  height: 90vh;
+}
+.title, .received-date, .description, .training-time {
   margin-left: 24px;
   margin-right: 24px;
   margin-top: 16px;
@@ -168,8 +172,13 @@ header .screen-close {
   word-wrap:break-word;
   font-size: 14px;
   line-height: 24px;
+  overflow: scroll;
 }
-
+.training-time {
+  color: #E4327D;
+  font-size: 12px;
+  line-height: 20px;
+}
 .player {
   margin-bottom: 16px;
 }
